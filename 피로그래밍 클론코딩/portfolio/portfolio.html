@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>피로그래밍</title>
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/design.css">
+
+</head>
+<body>
+    <!-- 피로그래밍 로고 및 카테고리 구현 -->
+    <header id="header">
+        <a class="logo" href="#">
+            <h1><img src="https://piro-homepage-bucket.s3.ap-northeast-2.amazonaws.com/static/images/icons/logo.svg" alt="피로그래밍 로고"></h1>
+        </a>
+        <nav class="menu">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#" class="active">Portfolio</a></li> <!-- 현재 페이지 활성화 -->
+                <li><a href="#">Interview</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Recruit</a></li>
+            </ul>
+        </nav>     
+    </header>
+
+    <!-- 24기 페이지만 구현 -->
+    <article class="cohort">
+        <div class="number">
+            <h2>24기</h2>
+            <a href="#" class="last">23기 ></a>
+        </div>
+    </article>
+
+    <!-- grid 배열 구현 -->
+    <main class="portfolio">
+        <div class="project">
+            <ul class="box_list">
+
+                <!-- grid 안 사진 및 요소 구현 -->
+                <li class="box">
+                    <div class="box_zoom"> <!-- 호버 시 이미지 확대 -->
+                        <img src="images/ReCapture.png" alt="리캡쳐">
+                    </div>
+                    <div class="box_content">
+                        <h3>Re:Capture</h3>
+                        <p class="comment">무분별하게 쌓이는 사진을 사용자의 저장 목적에 따라 지능적으로 분류하고 관리해 주는 AI기반 스마트 갤러리 서비스</p>
+                        <div class="ProjectTeam">
+                            <span class="ProjectManager">이서현</span>
+                            <span class="ProjectMember">한혜담</span>
+                            <span class="ProjectMember">김나영</span>
+                            <span class="ProjectMember">박정해</span>
+                            <span class="ProjectMember">박선우</span>
+                        </div>
+                    <button type="button" class="click_btn"> <!-- 호버 시 햄버거 버튼 찌그러지는 효과 -->
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    </div>
+                </li>
+                
+                <!-- 나머지 박스들 동일한 구조 반복 -->
+
+                <li class="box">
+                    <div class="box_zoom">
+                        <img src="images/Recipick.png" alt="레시픽">
+                    </div>
+                    <div class="box_content">
+                        <h3>레시픽</h3>
+                        <p class="comment">필터링 및 추천 점수 로직으로 실현하는 냉장고 맞춤형 레시피 추천 서비스</p>
+                        <div class="ProjectTeam">
+                            <span class="ProjectManager">김경원</span>
+                            <span class="ProjectMember">김서윤</span>
+                            <span class="ProjectMember">박민욱</span>
+                            <span class="ProjectMember">오채령</span>
+                            <span class="ProjectMember">최명규</span>
+                        </div>
+                    <button type="button" class="click_btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    </div>
+                </li>
+
+                <li class="box">
+                    <div class="box_zoom">
+                        <img src="images/CustomEconomy.png" alt="커스텀경제">
+                    </div>
+                    <div class="box_content">
+                        <h3>커스텀 경제</h3>
+                        <p class="comment">사용자의 수준과 상황에 맞게 경제 기사를 재풀이 해주는 AI 기반 경제 학습 서비스</p>
+                        <div class="ProjectTeam">
+                            <span class="ProjectManager">양현서</span>
+                            <span class="ProjectMember">강승구</span>
+                            <span class="ProjectMember">공하은</span>
+                            <span class="ProjectMember">안시현</span>
+                            <span class="ProjectMember">장준학</span>
+                        </div>
+                    <button type="button" class="click_btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    </div>
+                </li>
+
+                <li class="box">
+                    <div class="box_zoom">
+                        <img src="images/KITUP.jpeg" alt="킷업">
+                    </div>
+                    <div class="box_content">
+                        <h3>KITUP</h3>
+                        <p class="comment">프로젝트 완주를 위한 팀매칭 및 팀플 가이드 서비스, KITUP</p>
+                        <div class="ProjectTeam">
+                            <span class="ProjectManager">성유리</span>
+                            <span class="ProjectMember">이수종</span>
+                            <span class="ProjectMember">장민지</span>
+                            <span class="ProjectMember">이형주</span>
+                            <span class="ProjectMember">김민하</span>
+                        </div>
+                    <button type="button" class="click_btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    </div>
+                </li>
+
+                <li class="box">
+                    <div class="box_zoom">
+                        <img src="images/Uniquest.png" alt="유니퀘스트">
+                    </div>
+                    <div class="box_content">
+                        <h3>Uniquest</h3>
+                        <p class="comment">대학 캠퍼스라는 신뢰 기반 공간에서 학우끼리 심부름, 학업, 대여, 구인 등 다양한 도움을 주고받을 수 있도록 연결해주는 중개 플랫폼</p>
+                        <div class="ProjectTeam">
+                            <span class="ProjectManager">윤찬웅</span>
+                            <span class="ProjectMember">박서윤</span>
+                            <span class="ProjectMember">백종현</span>
+                            <span class="ProjectMember">김수아</span>
+                        </div>
+                    <button type="button" class="click_btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    </div>    
+                </li>
+            </ul>
+        </div>
+    </main>
+
+        <!-- footer 요소 구현 -->
+        <aside>
+            <div class="aside_left">
+                <a href="#" class="rule_link">PIROGRAMMING 회칙 ></a>
+                <div class="social_link">
+                <a href="#"><img src="images/chat.png" alt="피로그래밍 카카오톡"></a>
+                <a href="#"><img src="images/github.png" alt="피로그래밍 깃허브"></a>
+                <a href="#"><img src="images/instagram.png" alt="피로그래밍 인스타그램"></a>
+                </div>
+            
+                <a href="#" class="email_link"><img src="images/gmail.png" alt="피로그래밍 이메일">pirogramming.official@gmail.com</a>
+            </div>
+            <nav class="footer_menu">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>   
+                    <li><a href="#">Portfolio</a></li>
+                    <li><a href="#">Interview</a></li>
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">Recruit</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <footer>
+            <div class="footer-inner">
+                <p>© Pirogramming. 2023 All rights reserved.</p>
+            </div>
+        </footer>
+
+</body>
+</html>

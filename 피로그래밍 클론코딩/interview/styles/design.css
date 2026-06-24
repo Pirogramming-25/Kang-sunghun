@@ -1,0 +1,393 @@
+/* ===== Header ===== */
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 max(40px, calc((100% - 1200px) / 2));
+    height: 80px;
+    background: #000;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+#header .logo {
+    display: flex;
+    align-items: center;
+}
+
+#header h1 {
+    width: 160px;
+}
+
+#header .menu ul {
+    display: flex;
+    gap: 24px;
+}
+
+#header .menu ul li a {
+    font-size: 20px;
+    font-weight: 450;
+    color: #fff;
+    white-space: nowrap;
+    transition: transform 0.15s ease;
+    display: inline-block;
+}
+
+#header .menu ul li a.active {
+    color: #0bec12;
+}
+
+#header .menu ul li a:hover {
+    transform: translateY(-2px);
+}
+
+/* ===== Cohort ===== */
+.cohort {
+    padding: 4px max(40px, calc((100% - 1200px) / 2)) 16px;
+    background: #000;
+}
+
+.cohort .number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    
+}
+
+.cohort .number h2 {
+    font-size: 24px;
+    font-weight: 400;
+    color: #fff;
+}
+
+.cohort .number .last {
+    position: absolute;
+    right: 0;
+    font-size: 18px;
+    font-weight: 400;
+    color: #fff;
+}
+
+.cohort .number .last:hover {
+    color: #fff;
+}
+
+/* ===== Interview ===== */
+.interview {
+    padding: 24px 40px 80px;
+    background: #000;
+}
+
+/* grid 배열 구현 - 3열 */
+.card_list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.interview_card {
+    background: #333;
+    border-radius: 12px;
+    padding: 16px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+/* 박스 호버 시 2px 올라가는 효과 */
+.interview_card:hover {
+    transform: translateY(-2px);
+}
+
+.card_header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.card_zoom {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.card_zoom img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+/* 박스 호버 시 이미지 확대되는 효과 */
+.interview_card:hover .card_zoom img {
+    transform: scale(1.08);
+}
+
+.card_info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+}
+
+.card_info h3 {
+    font-size: 18px;
+    font-weight: 400;
+    color: #fff;
+}
+
+.major_major,
+.major_double,
+.major_non {
+    font-size: 15px;
+    color: #fff;
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.major_major {
+    background: #2188b6;
+}
+
+.major_non {
+    background: #c54422;
+}
+
+.major_double {
+    background: #35a67b;
+}
+
+.comment {
+    font-size: 17px;
+    font-weight: 400;
+    color: #fff;
+}
+
+.click_btn {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 4px;
+    align-self: flex-start;
+    margin-left: auto;
+}
+
+.click_btn span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background-color: #aaa;
+    border-radius: 1px;
+    transition: all 0.3s ease;
+}
+
+/* 박스 호버 시 햄버거 버튼 찌그러지는 효과 */
+
+/* 첫 번째 선 - 왼쪽으로 */
+.interview_card:hover .click_btn span:nth-child(1) {
+    transform: scaleX(0.5);
+    transform-origin: left;
+}
+
+/* 두 번째 선 - 그대로 */
+.interview_card:hover .click_btn span:nth-child(2) {
+    transform: scaleX(1);
+}
+
+/* 세 번째 선 - 오른쪽으로 */
+.interview_card:hover .click_btn span:nth-child(3) {
+    transform: scaleX(0.5);
+    transform-origin: right;
+}
+
+/* ===== Aside ===== */
+aside {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px max(40px, calc((100% - 1200px) / 2));
+    background: #333;
+}
+
+aside .aside_left {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+aside .rule_link {
+    font-size: 16px;
+    color: #fff;
+    font-weight: 400;
+    transition: transform 0.3 ease;
+}
+
+aside .rule_link:hover {
+    transform: translateY(-2px);
+}
+
+aside .social_link {
+    display: flex;
+    gap: 10px;
+}
+
+aside .social_link a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #222;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+aside .social_link a:hover{
+    transform: translateY(-2px);
+}
+
+aside .social_link img {
+    width: 40px;
+    height: 40px;
+}
+
+aside .email_link {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #fff;
+    transition: transform 0.3s ease;
+}
+
+aside .email_link img {
+    width: 40px;
+    height: 40px;
+}
+
+aside .email_link:hover {
+    transform: translateY(-2px);
+}
+
+aside .footer_menu ul {
+    display: flex;
+    align-items: center;
+}
+
+aside .footer_menu ul li a {
+    font-size: 16px;
+    color: #fff;
+    padding: 0 16px;
+    display: inline-block;
+    transition: transform 0.3 ease;
+}
+
+aside .footer_menu ul li a:hover {
+    transform: translateY(-2px);
+}
+
+/* footer 구분선 구현 */
+aside .footer_menu ul li:not(:last-child) {
+    border-right: 1px solid #666;
+}
+
+/* ===== Footer ===== */
+footer {
+    padding: 14px max(40px, calc((100% - 1200px) / 2));
+    background: #2a2a2a;
+}
+
+footer .footer-inner {
+    text-align: center;
+}
+
+footer .footer-inner p {
+    font-size: 13px;
+    font-weight: 400;
+    color: #eee;
+}
+
+/* ===== 반응형 ===== */
+
+/* 태블릿: 3열 유지 */
+@media (max-width: 1024px) {
+    #header,
+    .cohort,
+    .interview,
+    aside,
+    footer {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+}
+
+/* 모바일: 3열 → 2열 */
+@media (max-width: 768px) {
+    #header {
+        padding: 0 32px;
+    }
+
+    #header h1 {
+        width: 100px;
+    }
+
+    #header .menu ul {
+        gap: 8px;
+    }
+
+    #header .menu ul li a {
+        font-size: 12px;
+    }
+
+    .cohort,
+    .interview,
+    aside,
+    footer {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .card_list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    aside {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+    }
+    
+    aside .footer_menu ul {
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+}
+
+/* 소형 모바일: 2열 → 1열 */
+@media (max-width: 480px) {
+    #header .menu ul {
+        gap: 4px;
+    }
+
+    #header .menu ul li a {
+        font-size: 10px;
+    }
+
+    #header h1 {
+        width: 60px;
+    }
+
+    .card_list {
+        grid-template-columns: 1fr;
+    }
+}
