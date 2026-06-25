@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>피로그래밍</title>
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/design.css">
+
+</head>
+<body>
+    <!-- 피로그래밍 로고 및 카테고리 구현 -->
+    <header id="header">
+        <a class="logo" href="#">
+            <h1><img src="https://piro-homepage-bucket.s3.ap-northeast-2.amazonaws.com/static/images/icons/logo.svg" alt="피로그래밍 로고"></h1>
+        </a>
+        <nav class="menu">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Portfolio</a></li>
+                <li><a href="#" class="active">Interview</a></li> <!-- 현재 페이지 활성화 -->
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Recruit</a></li>
+            </ul>
+        </nav>     
+    </header>
+
+    <!-- 24기 페이지만 구현 -->
+    <article class="cohort">
+        <div class="number">
+            <h2>24기</h2>
+            <a href="#" class="last">23기 ></a>
+        </div>
+    </article>
+
+    <!-- grid 배열 구현 - 카드 리스트 -->
+    <main class="interview">
+        <ul class="card_list">
+
+            <!-- grid 안 사진 및 요소 구현 -->
+            <li class="interview_card">
+                <div class="card_header">
+                    <div class="card_zoom"> <!-- 호버 시 이미지 확대 -->
+                        <img src="images/누오.png" alt="누오">
+                    </div>
+                    <div class="card_info">
+                        <h3>누오</h3>
+                        <span class="major_major">전공자</span>
+                    </div>
+                    <button type="button" class="click_btn"> <!-- 호버 시 햄버거 찌그러짐 -->
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <p class="comment">누오입니다.</p>
+            </li>
+
+            <!-- 나머지 카드들 동일한 구조 반복 -->
+
+            <li class="interview_card">
+                <div class="card_header">
+                    <div class="card_zoom">
+                        <img src="images/토오.png" alt="토오">
+                    </div>
+                    <div class="card_info">
+                        <h3>토오</h3>
+                        <span class="major_double">복수전공</span>
+                    </div>
+                    <button type="button" class="click_btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <p class="comment">토오입니다.</p>
+            </li>
+
+            <li class="interview_card">
+                <div class="card_header">
+                    <div class="card_zoom">
+                        <img src="images/두루지벌레.png" alt="두루지벌레">
+                    </div>
+                    <div class="card_info">
+                        <h3>두루지벌레</h3>
+                        <span class="major_major">전공자</span>
+                    </div>
+                    <button type="button" class="click_btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <p class="comment">두루지벌레입니다.</p>
+            </li>
+
+            <li class="interview_card">
+                <div class="card_header">
+                    <div class="card_zoom">
+                        <img src="images/과사삭벌레.png" alt="과사삭벌레">
+                    </div>
+                    <div class="card_info">
+                        <h3>과사삭벌레</h3>
+                        <span class="major_major">전공자</span>
+                    </div>
+                    <button type="button" class="click_btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <p class="comment">과사삭벌레입니다.</p>
+            </li>
+
+            <li class="interview_card">
+                <div class="card_header">
+                    <div class="card_zoom">
+                        <img src="images/누니머기.png" alt="누니머기">
+                    </div>
+                    <div class="card_info">
+                        <h3>누니머기</h3>
+                        <span class="major_non">비전공자</span>
+                    </div>
+                    <button type="button" class="click_btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <p class="comment">누니머기입니다.</p>
+            </li>
+
+            <li class="interview_card">
+                <div class="card_header">
+                    <div class="card_zoom">
+                        <img src="images/해무기.png" alt="해무기">
+                    </div>
+                    <div class="card_info">
+                        <h3>해무기</h3>
+                        <span class="major_non">비전공자</span>
+                    </div>
+                    <button type="button" class="click_btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <p class="comment">해무기입니다.</p>
+            </li>
+
+            <li class="interview_card">
+                <div class="card_header">
+                    <div class="card_zoom">
+                        <img src="images/메타몽.png" alt="메타몽">
+                    </div>
+                    <div class="card_info">
+                        <h3>메타몽</h3>
+                        <span class="major_non">비전공자</span>
+                    </div>
+                    <button type="button" class="click_btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <p class="comment">메타몽입니다.</p>
+            </li>
+
+            <li class="interview_card">
+                <div class="card_header">
+                    <div class="card_zoom">
+                        <img src="images/잉어킹.png" alt="잉어킹">
+                    </div>
+                    <div class="card_info">
+                        <h3>잉어킹</h3>
+                        <span class="major_major">전공자</span>
+                    </div>
+                    <button type="button" class="click_btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <p class="comment">잉어킹입니다.</p>
+            </li>
+
+            <li class="interview_card">
+                <div class="card_header">
+                    <div class="card_zoom">
+                        <img src="images/랄토스.png" alt="랄토스">
+                    </div>
+                    <div class="card_info">
+                        <h3>랄토스</h3>
+                        <span class="major_major">전공자</span>
+                    </div>
+                    <button type="button" class="click_btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <p class="comment">랄토스입니다.</p>
+            </li>
+
+            <li class="interview_card">
+                <div class="card_header">
+                    <div class="card_zoom">
+                        <img src="images/톱치.png" alt="톱치">
+                    </div>
+                    <div class="card_info">
+                        <h3>톱치</h3>
+                        <span class="major_major">전공자</span>
+                    </div>
+                    <button type="button" class="click_btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <p class="comment">톱치입니다.</p>
+            </li>
+
+            <li class="interview_card">
+                <div class="card_header">
+                    <div class="card_zoom">
+                        <img src="images/귀뚤뚜기.png" alt="귀뚤뚜기">
+                    </div>
+                    <div class="card_info">
+                        <h3>귀뚤뚜기</h3>
+                        <span class="major_major">전공자</span>
+                    </div>
+                    <button type="button" class="click_btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <p class="comment">귀뚤뚜기입니다.</p>
+            </li>
+
+            <li class="interview_card">
+                <div class="card_header">
+                    <div class="card_zoom">
+                        <img src="images/꼬링크.png" alt="꼬링크">
+                    </div>
+                    <div class="card_info">
+                        <h3>꼬링크</h3>
+                        <span class="major_major">전공자</span>
+                    </div>
+                    <button type="button" class="click_btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <p class="comment">꼬링크입니다.</p>
+            </li>
+
+            <li class="interview_card">
+                <div class="card_header">
+                    <div class="card_zoom">
+                        <img src="images/누오.png" alt="누오">
+                    </div>
+                    <div class="card_info">
+                        <h3>누오</h3>
+                        <span class="major_major">전공자</span>
+                    </div>
+                    <button type="button" class="click_btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <p class="comment">누오입니다.</p>
+            </li>
+
+            <li class="interview_card">
+                <div class="card_header">
+                    <div class="card_zoom">
+                        <img src="images/토오.png" alt="토오">
+                    </div>
+                    <div class="card_info">
+                        <h3>토오</h3>
+                        <span class="major_double">복수전공</span>
+                    </div>
+                    <button type="button" class="click_btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <p class="comment">토오입니다.</p>
+            </li>
+
+            <li class="interview_card">
+                <div class="card_header">
+                    <div class="card_zoom">
+                        <img src="images/두루지벌레.png" alt="두루지벌레">
+                    </div>
+                    <div class="card_info">
+                        <h3>두루지벌레</h3>
+                        <span class="major_major">전공자</span>
+                    </div>
+                    <button type="button" class="click_btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <p class="comment">두루지벌레입니다.</p>
+            </li>
+
+            <li class="interview_card">
+                <div class="card_header">
+                    <div class="card_zoom">
+                        <img src="images/과사삭벌레.png" alt="과사삭벌레">
+                    </div>
+                    <div class="card_info">
+                        <h3>과사삭벌레</h3>
+                        <span class="major_major">전공자</span>
+                    </div>
+                    <button type="button" class="click_btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <p class="comment">과사삭벌레입니다.</p>
+            </li>
+
+            <li class="interview_card">
+                <div class="card_header">
+                    <div class="card_zoom">
+                        <img src="images/누니머기.png" alt="누니머기">
+                    </div>
+                    <div class="card_info">
+                        <h3>누니머기</h3>
+                        <span class="major_non">비전공자</span>
+                    </div>
+                    <button type="button" class="click_btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <p class="comment">누니머기입니다.</p>
+            </li>
+
+            <li class="interview_card">
+                <div class="card_header">
+                    <div class="card_zoom">
+                        <img src="images/해무기.png" alt="해무기">
+                    </div>
+                    <div class="card_info">
+                        <h3>해무기</h3>
+                        <span class="major_non">비전공자</span>
+                    </div>
+                    <button type="button" class="click_btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <p class="comment">해무기입니다.</p>
+            </li>
+
+            <li class="interview_card">
+                <div class="card_header">
+                    <div class="card_zoom">
+                        <img src="images/메타몽.png" alt="메타몽">
+                    </div>
+                    <div class="card_info">
+                        <h3>메타몽</h3>
+                        <span class="major_non">비전공자</span>
+                    </div>
+                    <button type="button" class="click_btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <p class="comment">메타몽입니다.</p>
+            </li>
+
+            <li class="interview_card">
+                <div class="card_header">
+                    <div class="card_zoom">
+                        <img src="images/잉어킹.png" alt="잉어킹">
+                    </div>
+                    <div class="card_info">
+                        <h3>잉어킹</h3>
+                        <span class="major_major">전공자</span>
+                    </div>
+                    <button type="button" class="click_btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <p class="comment">잉어킹입니다.</p>
+            </li>
+
+            <li class="interview_card">
+                <div class="card_header">
+                    <div class="card_zoom">
+                        <img src="images/랄토스.png" alt="랄토스">
+                    </div>
+                    <div class="card_info">
+                        <h3>랄토스</h3>
+                        <span class="major_major">전공자</span>
+                    </div>
+                    <button type="button" class="click_btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <p class="comment">랄토스입니다.</p>
+            </li>
+
+            <li class="interview_card">
+                <div class="card_header">
+                    <div class="card_zoom">
+                        <img src="images/톱치.png" alt="톱치">
+                    </div>
+                    <div class="card_info">
+                        <h3>톱치</h3>
+                        <span class="major_major">전공자</span>
+                    </div>
+                    <button type="button" class="click_btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <p class="comment">톱치입니다.</p>
+            </li>
+
+            <li class="interview_card">
+                <div class="card_header">
+                    <div class="card_zoom">
+                        <img src="images/귀뚤뚜기.png" alt="귀뚤뚜기">
+                    </div>
+                    <div class="card_info">
+                        <h3>귀뚤뚜기</h3>
+                        <span class="major_major">전공자</span>
+                    </div>
+                    <button type="button" class="click_btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <p class="comment">귀뚤뚜기입니다.</p>
+            </li>
+
+            <li class="interview_card">
+                <div class="card_header">
+                    <div class="card_zoom">
+                        <img src="images/꼬링크.png" alt="꼬링크">
+                    </div>
+                    <div class="card_info">
+                        <h3>꼬링크</h3>
+                        <span class="major_major">전공자</span>
+                    </div>
+                    <button type="button" class="click_btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <p class="comment">꼬링크입니다.</p>
+            </li>
+            
+        </ul>
+    </main>
+
+        <!-- footer 요소 구현 -->
+        <aside>
+            <div class="aside_left">
+                <a href="#" class="rule_link">PIROGRAMMING 회칙 ></a>
+                <div class="social_link">
+                <a href="#"><img src="images/chat.png" alt="피로그래밍 카카오톡"></a>
+                <a href="#"><img src="images/github.png" alt="피로그래밍 깃허브"></a>
+                <a href="#"><img src="images/instagram.png" alt="피로그래밍 인스타그램"></a>
+                </div>
+            
+                <a href="#" class="email_link"><img src="images/gmail.png" alt="피로그래밍 이메일">pirogramming.official@gmail.com</a>
+            </div>
+            <nav class="footer_menu">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>   
+                    <li><a href="#">Portfolio</a></li>
+                    <li><a href="#">Interview</a></li>
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">Recruit</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <footer>
+            <div class="footer-inner">
+                <p>© Pirogramming. 2023 All rights reserved.</p>
+            </div>
+        </footer>
+
+</body>
+</html>
