@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Movie reviews</title>
+</head>
+<body>
+    <a href="{% url 'index' %}">my Movie reviews</a>
+    <a href="{% url 'new' %}">Add a New review</a>
+    <hr>
+
+    <h1>{{ review.title }}</h1>
+    <a href="{% url 'edit' review.id %}">수정</a>
+    <a href="{% url 'delete' review.id %}" onclick="return confirm('정말 삭제하시겠습니까?')">삭제</a>
+    <hr>
+
+    <p>개봉년도: {{ review.openyear }}</p>
+    <p>감독: {{ review.director }}</p>
+    <p>주연: {{ review.actor }}</p>
+    <p>장르: {{ review.genre }}</p>
+    <p>별점: {{ review.starpoint }}</p>
+    <p>러닝타임: {% if hour %}{{ hour }}시간 {% endif %}{{ minute }}분</p>
+
+    <hr>
+
+    <p>{{ review.reviewcontent }}</p>
+
+    <hr>
+</body>
+</html>

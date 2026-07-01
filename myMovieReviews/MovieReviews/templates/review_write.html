@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Movie reviews</title>
+</head>
+<body>
+    <a href="{% url 'index' %}">my Movie reviews</a>
+    <a href="{% url 'new' %}">Add a New review</a>
+    <hr>
+
+    <h1>Movie reviews</h1>
+
+    <form action="{% url 'create' %}" method="post">
+        {% csrf_token %}
+        <p>제목: <input type="text" name="title"></p>
+        <p>개봉년도: <input type="text" name="openyear"></p>
+        <p>장르: 
+            <select name="genre">
+                <option value="SF">SF</option>
+                <option value="액션">액션</option>
+                <option value="코미디">코미디</option>
+                <option value="드라마">드라마</option>
+                <option value="공포">공포</option>
+                <option value="애니메이션">애니메이션</option>
+                <option value="로맨스">로맨스</option>
+                <option value="스릴러">스릴러</option>
+                <option value="미스터리">미스터리</option>
+                <option value="판타지">판타지</option>
+            </select>
+        </p>
+        <p>별점: <input type="text" name="starpoint"></p>
+        <p>러닝타임: <input type="text" name="runningtime"></p>
+        <p>리뷰: <input type="text" name="reviewcontent"></p>
+        <p>감독: <input type="text" name="director"></p>
+        <p>배우: <input type="text" name="actor"></p>
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>
