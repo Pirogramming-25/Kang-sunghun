@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Movie reviews</title>
+</head>
+<body>
+    <h1>my Movie reviews</h1>
+
+    <a href="{% url 'new' %}">Add a New review</a>
+    <p>정렬:
+        <a href="?sort=title">제목 이름 순</a>
+        <a href="?sort=-starpoint">별점 높은 순</a>
+        <a href="?sort=starpoint">별점 낮은 순</a>
+        <a href="?sort=runningtime">상영 시간 순</a>
+    </p>
+    <hr>
+
+    {% for review in reviews %}
+        <h2><a href="{% url 'detail' review.id %}">{{ review.title }}</a></h2>
+        <p>개봉년도 : {{ review.openyear }}</p>
+        <p>장르: {{ review.genre }}</p>
+        <p>별점: {{ review.starpoint }}</p>
+        <p>러닝타임: {% if review.hour %}{{ review.hour }}시간 {% endif %}{{ review.minute }}분</p>
+        <hr>
+    {% endfor %}
+
+</body>
+</html>

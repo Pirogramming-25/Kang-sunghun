@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Movie reviews</title>
+</head>
+<body>
+    <a href="{% url 'index' %}">my Movie reviews</a>
+    <a href="{% url 'new' %}">Add a New review</a>
+    <hr>
+
+    <h1>Movie reviews</h1>
+
+    <form action="{% url 'update' review.id %}" method="post">
+        {% csrf_token %}
+        <p>제목: <input type="text" name="title" value="{{ review.title }}"></p>
+        <p>개봉년도: <input type="text" name="openyear" value="{{ review.openyear }}"></p>
+        <p>장르:
+            <select name="genre">
+                <option value="SF" {% if review.genre == 'SF' %}selected{% endif %}>SF</option>
+                <option value="액션" {% if review.genre == '액션' %}selected{% endif %}>액션</option>
+                <option value="코미디" {% if review.genre == '코미디' %}selected{% endif %}>코미디</option>
+                <option value="드라마" {% if review.genre == '드라마' %}selected{% endif %}>드라마</option>
+                <option value="공포" {% if review.genre == '공포' %}selected{% endif %}>공포</option>
+                <option value="애니메이션" {% if review.genre == '애니메이션' %}selected{% endif %}>애니메이션</option>
+                <option value="로맨스" {% if review.genre == '로맨스' %}selected{% endif %}>로맨스</option>
+                <option value="스릴러" {% if review.genre == '스릴러' %}selected{% endif %}>스릴러</option>
+                <option value="미스터리" {% if review.genre == '미스터리' %}selected{% endif %}>미스터리</option>
+                <option value="판타지" {% if review.genre == '판타지' %}selected{% endif %}>판타지</option>
+            </select>
+        </p>
+        <p>별점: <input type="text" name="starpoint" value="{{ review.starpoint }}"></p>
+        <p>러닝타임: <input type="text" name="runningtime" value="{{ review.runningtime }}"></p>
+        <p>리뷰: <input type="text" name="reviewcontent" value="{{ review.reviewcontent }}"></p>
+        <p>감독: <input type="text" name="director" value="{{ review.director }}"></p>
+        <p>배우: <input type="text" name="actor" value="{{ review.actor }}"></p>
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>
