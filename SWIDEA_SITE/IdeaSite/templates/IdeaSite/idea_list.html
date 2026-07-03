@@ -1,0 +1,53 @@
+{% extends 'IdeaSite/base.html' %}
+
+{% block content %}
+
+<h1>Idea List</h1>
+<p>나의 아이디어를 잊지 말고 기록해보세요.</p>
+
+<hr>
+
+<form method="GET">
+    <select name="sort" onchange="this.form.submit()">
+        <option value="star" {% if sort == 'star' %}selected{% endif %}>찜하기순</option>
+        <option value="latest" {% if sort == 'latest' %}selected{% endif %}>최신순</option>
+        <option value="oldest" {% if sort == 'oldest' %}selected{% endif %}>등록순</option>
+        <option value="name" {% if sort == 'name' %}selected{% endif %}>이름순</option>
+    </select>
+</form>
+
+<hr>
+
+<div class="idea-list">
+{% for idea in ideas %}
+    <div class="idea-card">
+        {% if idea.image %}
+            <img src="{{ idea.image.url }}" width="150">
+        {% endif %}
+        <p>
+            {% if idea.is_starred %}★{% else %}☆{% endif %}
+            <a href="{% url 'idea_detail' idea.id %}">{{ idea.title }}</a>
+        </p>
+        <p>예상 개발 툴 : {{ idea.devtool.name }}</p>
+        <p>아이디어 관심도 : {{ idea.interest }}</p>
+    </div>
+{% endfor %}
+</div>
+
+</div>
+
+<div class="pagination">
+    {% if ideas.has_previous %}
+        <a href="?sort={{ sort }}&page={{ ideas.previous_page_number }}">‹</a>
+    {% endif %}
+
+    {% for num in ideas.paginator.page_range %}
+        <a href="?sort={{ sort }}&page={{ num }}">{{ num }}</a>
+    {% endfor %}
+
+    {% if ideas.has_next %}
+        <a href="?sort={{ sort }}&page={{ ideas.next_page_number }}">›</a>
+    {% endif %}
+</div>
+
+{% endblock %}
