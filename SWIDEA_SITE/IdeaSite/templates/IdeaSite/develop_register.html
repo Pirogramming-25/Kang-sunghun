@@ -1,0 +1,15 @@
+{% extends 'IdeaSite/base.html' %}
+
+{% block content %}
+
+<h1>DevTool Register</h1>
+<p>개발툴 등록 페이지입니다. 자신이 다룰 수 있는 개발툴을 등록해 보세요.</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <p>이름: <input type="text" name="name"></p>
+    <p>종류: <input type="text" name="kind"></p>
+    <p>개발툴 설명: <textarea name="content"></textarea></p>
+    <button type="submit">SUBMIT</button>
+</form>
+{% endblock %}

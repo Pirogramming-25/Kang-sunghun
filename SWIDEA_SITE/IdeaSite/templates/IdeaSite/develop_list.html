@@ -1,0 +1,14 @@
+{% extends 'IdeaSite/base.html' %}
+
+{% block content %}
+
+<h1>DevTool List</h1>
+<p>개발툴 목록 페이지 입니다. 자신이 사용가능한 개발들의 목록을 확인해 보세요.</p>
+
+<hr>
+
+{% for devtool in devtools %}
+    <p><a href="{% url 'develop_detail' devtool.id %}">{{ devtool.name }}</a> {{ devtool.kind }} {{ devtool.content }}</p>
+    <hr>
+{% endfor %}
+{% endblock %}

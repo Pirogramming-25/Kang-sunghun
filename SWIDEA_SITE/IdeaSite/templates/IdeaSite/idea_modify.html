@@ -1,0 +1,22 @@
+{% extends 'IdeaSite/base.html' %}
+
+{% block content %}
+
+<h1>Idea Detail Update</h1>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p>아이디어명: <input type="text" name="title" value="{{ idea.title }}"></p>
+    <p>Image: <input type="file" name="image"></p>
+    <p>아이디어 설명: <textarea name="content">{{ idea.content }}</textarea></p>
+    <p>아이디어 관심도: <input type="number" name="interest" value="{{ idea.interest }}"></p>
+    <p>예상 개발툴:
+        <select name="devtool">
+            {% for devtool in devtools %}
+                <option value="{{ devtool.id }}" {% if devtool.id == idea.devtool.id %}selected{% endif %}>{{ devtool.name }}</option>
+            {% endfor %}
+        </select>
+    </p>
+    <button type="submit">SUBMIT</button>
+</form>
+{% endblock %}
