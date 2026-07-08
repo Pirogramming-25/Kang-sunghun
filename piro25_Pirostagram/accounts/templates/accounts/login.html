@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>로그인 - Pirostagram</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <div class="auth-page">
+        <h1 class="logo">Pirostagram</h1>
+
+        <form method="POST" class="auth-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">로그인</button>
+        </form>
+
+        <p class="auth-link">
+            계정이 없으신가요? <a href="{% url 'accounts:signup' %}">회원가입</a>
+        </p>
+    </div>
+
+</body>
+</html>

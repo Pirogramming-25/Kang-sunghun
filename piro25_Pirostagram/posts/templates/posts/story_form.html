@@ -1,0 +1,6 @@
+<h1>스토리 올리기</h1>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="images" accept="image/*" multiple>
+    <button type="submit">올리기</button>
+</form>

@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ story.author.username }}의 스토리 - Pirostagram</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body class="story-page">
+
+    <div class="story-modal">
+        <a href="{% url 'posts:feed' %}" class="story-close">✕</a>
+
+        <p class="story-author">{{ story.author.username }}의 스토리</p>
+
+        <div class="story-viewer">
+            <button id="prev-btn" class="story-arrow">❮</button>
+
+            <div class="story-images">
+                {% for story_image in story.images.all %}
+                    <img src="{{ story_image.image.url }}" class="story-slide" style="display: none;">
+                {% endfor %}
+            </div>
+
+            <button id="next-btn" class="story-arrow">❯</button>
+        </div>
+
+        {% if story.author == request.user %}
+            <a href="{% url 'posts:story_delete' story.pk %}" class="small-link">스토리 삭제</a>
+        {% endif %}
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.story-slide');
+        let current = 0;
+
+        function showSlide(index) {
+            slides.forEach(function(slide) {
+                slide.style.display = 'none';
+            });
+            slides[index].style.display = 'block';
+        }
+
+        showSlide(current);
+
+        document.getElementById('next-btn').addEventListener('click', function() {
+            if (current < slides.length - 1) {
+                current = current + 1;
+                showSlide(current);
+            }
+        });
+
+        document.getElementById('prev-btn').addEventListener('click', function() {
+            if (current > 0) {
+                current = current - 1;
+                showSlide(current);
+            }
+        });
+
+        setInterval(function() {
+            if (current < slides.length - 1) {
+                current = current + 1;
+            } else {
+                current = 0;
+            }
+            showSlide(current);
+        }, 3000);
+        
+    </script>
+
+</body>
+</html>
