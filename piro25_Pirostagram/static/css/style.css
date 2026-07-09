@@ -1,0 +1,437 @@
+/* ===== 전체 기본 ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Malgun Gothic', sans-serif;
+    display: flex;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/* ===== 왼쪽 사이드바 ===== */
+.sidebar {
+    width: 300px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    border-right: 1px solid #ddd;
+    padding: 30px 25px;
+}
+
+.logo {
+    color: #90ee60;
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+.sidebar input[type="text"] {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #999;
+    margin-bottom: 10px;
+}
+
+.sidebar button {
+    padding: 5px 15px;
+    border: 1px solid #333;
+    border-radius: 15px;
+    background: white;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+/* ===== 메인 영역 ===== */
+.main {
+    margin-left: 300px;
+    flex: 1;
+    padding: 25px 60px;
+}
+
+/* ===== 스토리 ===== */
+.story-list {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.story-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+}
+
+.story-circle {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 1px solid #bbb;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    color: #333;
+    background: white;
+}
+
+/* ===== 게시글 카드 ===== */
+.post-card {
+    max-width: 500px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+.post-card img.post-image {
+    width: 100%;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+.post-author {
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.post-date {
+    color: #888;
+    font-size: 13px;
+}
+
+.like-btn {
+    font-size: 22px;
+}
+
+/* ===== 댓글 ===== */
+.comment {
+    font-size: 14px;
+    margin: 8px 0;
+}
+
+.comment-form textarea {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 6px;
+    resize: none;
+}
+
+.comment-form button {
+    padding: 4px 12px;
+    border: 1px solid #333;
+    border-radius: 12px;
+    background: white;
+    cursor: pointer;
+}
+
+.small-link {
+    font-size: 13px;
+    color: #4444cc;
+}
+
+/* ===== 프로필 페이지 ===== */
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    margin-bottom: 50px;
+}
+
+.profile-photo {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 1px solid #bbb;
+    object-fit: cover;
+}
+
+.profile-photo-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    background: white;
+}
+
+.profile-name {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.profile-btn {
+    font-size: 14px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    background: #efefef;
+    margin-left: 10px;
+}
+
+.follow-btn {
+    background: #1a3aff;
+    color: white;
+    font-weight: bold;
+}
+
+.profile-stats {
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.profile-stats strong {
+    color: black;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 250px);
+    gap: 20px;
+}
+
+.grid-image {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.no-posts {
+    font-size: 28px;
+    grid-column: 1 / -1;
+}
+
+/* ===== 유저 검색 페이지 ===== */
+.search-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: block;
+}
+
+.search-logo {
+    text-align: center;
+}
+
+.search-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.user-card {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    border: 1px solid #90ee60;
+    border-radius: 15px;
+    padding: 20px 30px;
+    margin-bottom: 25px;
+    box-shadow: 2px 3px 4px #ddd;
+}
+
+.user-card-photo {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-card-photo-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    background: #f5f5f5;
+}
+
+.user-card-info {
+    flex: 1;
+    font-size: 20px;
+}
+
+.user-card-nickname {
+    color: #999;
+    font-size: 16px;
+    margin-top: 8px;
+}
+
+.back-link {
+    display: block;
+    text-align: center;
+    color: #4444cc;
+    margin-top: 20px;
+}
+
+/* ===== 로그인/회원가입 페이지 ===== */
+.auth-page {
+    max-width: 400px;
+    margin: 60px auto;
+    padding: 40px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    display: block;
+    text-align: center;
+}
+
+.auth-form {
+    text-align: left;
+    margin-top: 20px;
+}
+
+.auth-form p {
+    margin-bottom: 15px;
+}
+
+.auth-form label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.auth-form button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background: #90ee60;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.auth-form .helptext {
+    font-size: 12px;
+    color: #999;
+}
+
+.auth-form ul {
+    font-size: 12px;
+    color: #999;
+    padding-left: 18px;
+}
+
+.auth-link {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.auth-link a {
+    color: #4444cc;
+    font-weight: bold;
+}
+
+/* ===== 스토리 감상 페이지 ===== */
+.story-page {
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.story-modal {
+    background: white;
+    border-radius: 10px;
+    padding: 40px 50px;
+    width: 750px;
+    position: relative;
+    text-align: center;
+}
+
+.story-close {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    font-size: 28px;
+}
+
+.story-author {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.story-viewer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.story-images img {
+    max-width: 400px;
+    max-height: 400px;
+}
+
+.story-arrow {
+    background: none;
+    border: none;
+    font-size: 36px;
+    cursor: pointer;
+}
+
+/* ===== 메뉴 아이콘 ===== */
+.menu-icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* ===== 기본 프로필 아이콘 ===== */
+.person-icon {
+    width: 60px;
+    height: 60px;
+}
+
+.person-icon-medium {
+    width: 80px;
+    height: 80px;
+}
+
+.person-icon-large {
+    width: 130px;
+    height: 130px;
+}
+
+/* ===== 게시글 정렬 ===== */
+.sort-form {
+    margin-bottom: 30px;
+}
+
+.sort-form select,
+.sort-form button {
+    padding: 4px 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background: white;
+    cursor: pointer;
+}
+
+/* ===== 게시글 검색 결과 ===== */
+.search-post-image {
+    border-radius: 8px;
+}

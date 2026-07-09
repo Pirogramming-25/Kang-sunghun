@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ profile_user.username }} - Pirostagram</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <!-- 왼쪽 사이드바 -->
+    <div class="sidebar">
+        <a href="{% url 'posts:feed' %}"><div class="logo">Pirostagram</div></a>
+
+        <div class="menu-item">
+            <img src="{% static 'images/house-door.svg' %}" class="menu-icon">
+            <a href="{% url 'posts:feed' %}">홈</a>
+        </div>
+
+        <div class="menu-item">
+            <img src="{% static 'images/search.svg' %}" class="menu-icon">
+            유저 검색
+        </div>
+        <form action="{% url 'accounts:user_search' %}" method="GET">
+            <input type="text" name="q">
+            <button type="submit">검색</button>
+        </form>
+
+        <div class="menu-item">
+            <img src="{% static 'images/plus-square.svg' %}" class="menu-icon">
+            <a href="{% url 'posts:post_create' %}">게시글 만들기</a>
+        </div>
+
+        <div class="menu-item">
+            <img src="{% static 'images/person.svg' %}" class="menu-icon">
+            <a href="{% url 'accounts:profile' request.user.username %}">프로필</a>
+        </div>
+
+        <form action="{% url 'accounts:logout' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit">로그아웃</button>
+        </form>
+    </div>
+
+    <!-- 메인 영역 -->
+    <div class="main">
+
+        <!-- 프로필 상단 -->
+        <div class="profile-header">
+            {% if profile_user.profile_image %}
+                <img src="{{ profile_user.profile_image.url }}" class="profile-photo">
+            {% else %}
+                <div class="profile-photo profile-photo-empty"><img src="{% static 'images/person.svg' %}" class="person-icon-large"></div>
+            {% endif %}
+
+            <div class="profile-info">
+                <p class="profile-name">
+                    {{ profile_user.username }}
+                    {% if profile_user == request.user %}
+                        <a href="#" class="profile-btn">프로필 수정하기</a>
+                    {% else %}
+                        <a href="{% url 'accounts:follow' profile_user.username %}" class="profile-btn follow-btn">
+                            {% if profile_user in request.user.followings.all %}
+                                팔로잉
+                            {% else %}
+                                팔로우
+                            {% endif %}
+                        </a>
+                    {% endif %}
+                </p>
+                <p class="profile-stats">
+                    게시물 <strong>{{ posts.count }}</strong>
+                    팔로워 <strong>{{ profile_user.followers.count }}</strong>
+                    팔로우 <strong>{{ profile_user.followings.count }}</strong>
+                </p>
+                <p>{% if profile_user.bio %}{{ profile_user.bio }}{% else %}소개글이 없습니다.{% endif %}</p>
+            </div>
+        </div>
+
+        <hr>
+        <br>
+
+        <!-- 게시글 그리드 -->
+        <div class="profile-grid">
+            {% for post in posts %}
+                <img src="{{ post.image.url }}" class="grid-image">
+            {% empty %}
+                <p class="no-posts">아직 게시물이 없습니다!<br>나만의 게시글을 만들어보세요!</p>
+            {% endfor %}
+        </div>
+
+    </div>
+
+</body>
+</html>
