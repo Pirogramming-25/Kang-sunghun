@@ -1,0 +1,226 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Django GPT{% endblock %}</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, "Malgun Gothic", sans-serif;
+      margin: 0;
+      background: #f8fafc;
+      color: #1e293b;
+    }
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 24px 20px 60px;
+    }
+    .nav {
+      display: flex;
+      gap: 8px;
+      border-bottom: 1px solid #e2e8f0;
+      margin-bottom: 28px;
+    }
+    .nav-link {
+      padding: 12px 14px;
+      text-decoration: none;
+      color: #64748b;
+      font-size: 15px;
+      border-bottom: 3px solid transparent;
+    }
+    .nav-link:hover {
+      color: #1e293b;
+    }
+    .nav-link.active {
+      font-weight: 700;
+      color: #4f46e5;
+      border-bottom: 3px solid #4f46e5;
+    }
+    h1 { font-size: 26px; margin: 0 0 16px; }
+    h2 { font-size: 17px; margin: 0 0 10px; }
+
+    .meta { margin: 4px 0; color: #64748b; font-size: 14px; }
+    .meta code { background: #eef2ff; padding: 2px 6px; border-radius: 4px; }
+
+    .hidden { display: none; }
+
+    .input-area {
+      width: 100%;
+      box-sizing: border-box;
+      margin-top: 18px;
+      padding: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 15px;
+      resize: vertical;
+    }
+    .input-area:disabled { background: #f1f5f9; color: #94a3b8; }
+
+    .action-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .btn {
+      padding: 10px 20px;
+      background: #4f46e5;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+    .btn:hover { background: #4338ca; }
+    .btn:disabled { background: #a5b4fc; cursor: not-allowed; }
+
+    .loading { color: #6366f1; font-size: 14px; }
+
+    .error-box {
+      margin-top: 18px;
+      padding: 12px 14px;
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      border-radius: 8px;
+      color: #b91c1c;
+      font-size: 14px;
+      white-space: pre-line;
+    }
+
+    .result-box, .history-box {
+      margin-top: 26px;
+      padding: 18px;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+    }
+    .result-main { margin: 0 0 12px; font-size: 15px; line-height: 1.7; }
+
+    .score-list, .history-list {
+      margin: 0;
+      padding-left: 20px;
+      font-size: 14px;
+      line-height: 1.8;
+      color: #475569;
+    }
+    .score-list { list-style: none; padding-left: 0; }
+    .history-empty { color: #94a3b8; }
+
+    .login-form {
+      margin-top: 20px;
+      max-width: 320px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .login-form label {
+      font-size: 14px;
+      color: #475569;
+      margin-top: 8px;
+    }
+    .login-form input[type="text"],
+    .login-form input[type="password"] {
+      padding: 10px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 15px;
+      font-family: inherit;
+    }
+    .login-form .btn { margin-top: 16px; }
+
+    .nav-user {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+    }
+    .nav-username { color: #475569; font-weight: 600; }
+    .logout-form { margin: 0; }
+    .link-btn {
+      background: none;
+      border: none;
+      padding: 0;
+      color: #64748b;
+      font-size: 14px;
+      font-family: inherit;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    .link-btn:hover { color: #4f46e5; }
+    .nav-login {
+      color: #64748b;
+      font-size: 14px;
+      text-decoration: none;
+    }
+    .nav-login:hover { color: #4f46e5; }
+
+    .summary-text {
+      margin: 0;
+      padding: 14px;
+      background: #f8fafc;
+      border-radius: 8px;
+      font-size: 15px;
+      line-height: 1.7;
+      white-space: pre-line;
+    }
+
+    .section-title {
+      font-size: 15px;
+      color: #4f46e5;
+      margin: 22px 0 8px;
+    }
+    .btn-sub {
+      background: #fff;
+      color: #4f46e5;
+      border: 1px solid #c7d2fe;
+    }
+    .btn-sub:hover { background: #eef2ff; }
+    .btn-sub:disabled {
+      background: #f8fafc;
+      color: #a5b4fc;
+      border-color: #e2e8f0;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="container">
+    {% csrf_token %}
+
+    <nav class="nav">
+      <a class="nav-link {% if active_tab == 'sentiment' %}active{% endif %}"
+         href="{% url 'my_gpt:sentiment' %}">감정 분석</a>
+
+      <a class="nav-link {% if active_tab == 'summarize' %}active{% endif %}"
+         href="{% url 'my_gpt:summarize' %}">문서 요약</a>
+         
+      <a class="nav-link {% if active_tab == 'moderate' %}active{% endif %}"
+         href="{% url 'my_gpt:moderate' %}">유해 표현 분석</a>
+
+      <a class="nav-link {% if active_tab == 'combo' %}active{% endif %}"
+         href="{% url 'my_gpt:combo' %}">복합 분석</a>
+
+      <div class="nav-user">
+        {% if user.is_authenticated %}
+          <span class="nav-username">{{ user.username }}</span>
+          <form method="post" action="{% url 'logout' %}" class="logout-form">
+            {% csrf_token %}
+            <button type="submit" class="link-btn">로그아웃</button>
+          </form>
+        {% else %}
+          <a class="nav-login" href="{% url 'login' %}">로그인</a>
+        {% endif %}
+      </div>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+  </div>
+  <script src="{% static 'my_gpt/js/common.js' %}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

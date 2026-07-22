@@ -1,0 +1,49 @@
+{% extends "my_gpt/base.html" %}
+{% load static %}
+
+{% block title %}유해 표현 분석 | Django GPT{% endblock %}
+
+{% block content %}
+  <h1>🚨 유해 표현 분석</h1>
+
+  <p class="meta">사용 모델: <code>{{ model_id }}</code></p>
+  <p class="meta">입력 언어: {{ input_language }}</p>
+  <p class="meta">입력 길이: {{ min_len }}자 이상 {{ max_len }}자 이하</p>
+
+  <textarea id="input-text"
+            class="input-area"
+            rows="6"
+            maxlength="{{ max_len }}"
+            placeholder="분석할 영어 문장을 입력하세요."></textarea>
+
+  <div class="action-row">
+    <button id="run-btn" type="button" class="btn">분석 실행</button>
+    <span id="loading" class="loading hidden">처리 중...</span>
+  </div>
+
+  <div id="error-box" class="error-box hidden"></div>
+
+  <div id="result-box" class="result-box hidden">
+    <h2>결과</h2>
+    <p class="result-main">
+      최고 위험 레이블: <strong id="result-label"></strong><br>
+      위험 점수: <strong id="result-score"></strong>
+    </p>
+    <ul id="result-scores" class="score-list"></ul>
+  </div>
+
+  <div class="history-box">
+    <h2>최근 기록</h2>
+    <ol id="history-list" class="history-list">
+      {% for h in histories %}
+        <li>{{ h.input_text|truncatechars:40 }} → {{ h.result_data.highest_label }}</li>
+      {% empty %}
+        <li class="history-empty">아직 실행 기록이 없습니다.</li>
+      {% endfor %}
+    </ol>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'my_gpt/js/moderate.js' %}"></script>
+{% endblock %}
