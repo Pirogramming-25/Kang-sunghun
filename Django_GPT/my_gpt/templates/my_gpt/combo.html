@@ -1,0 +1,77 @@
+{% extends "my_gpt/base.html" %}
+{% load static %}
+
+{% block title %}복합 분석 | Django GPT{% endblock %}
+
+{% block content %}
+  <h1>🔗 AI 고객 피드백 분석 리포트</h1>
+
+  <p class="meta">
+    사용 모델:
+    {% for m in model_ids %}<code>{{ m }}</code>{% if not forloop.last %} → {% endif %}{% endfor %}
+  </p>
+  <p class="meta">입력 언어: {{ input_language }}</p>
+  <p class="meta">입력 길이: {{ min_len }}자 이상 {{ max_len }}자 이하</p>
+  <p class="meta">처리 순서: 원문 요약 → 요약문 감정 분석 → 요약문 유해 표현 분석</p>
+
+  <textarea id="input-text"
+            class="input-area"
+            rows="10"
+            maxlength="{{ max_len }}"
+            placeholder="분석할 영어 고객 리뷰 또는 피드백을 입력하세요. (200자 이상)"></textarea>
+
+  <div class="action-row">
+    <button id="run-btn" type="button" class="btn">분석 실행</button>
+    <button id="regen-btn" type="button" class="btn btn-sub hidden">재생성</button>
+    <span id="loading" class="loading hidden">처리 중...</span>
+  </div>
+
+  <div id="error-box" class="error-box hidden"></div>
+
+  <div id="result-box" class="result-box hidden">
+    <h2>분석 리포트</h2>
+
+    <h3 class="section-title">1. 입력 원문</h3>
+    <p class="summary-text" id="result-original"></p>
+
+    <h3 class="section-title">2. 요약문</h3>
+    <p class="summary-text" id="result-summary"></p>
+    <p class="meta" id="result-lengths"></p>
+
+    <h3 class="section-title">3. 감정 분석</h3>
+    <p class="result-main">
+      Label: <strong id="result-sentiment-label"></strong><br>
+      Score: <strong id="result-sentiment-score"></strong>
+    </p>
+
+    <h3 class="section-title">4. 유해 표현 분석</h3>
+    <p class="result-main">
+      Highest Risk: <strong id="result-tox-label"></strong><br>
+      Score: <strong id="result-tox-score"></strong>
+    </p>
+    <ul id="result-tox-scores" class="score-list"></ul>
+
+    <h3 class="section-title">5. 종합 판정</h3>
+    <p class="summary-text" id="result-verdict"></p>
+  </div>
+
+  <div class="history-box">
+    <h2>최근 기록</h2>
+    <ol id="history-list" class="history-list">
+      {% for h in histories %}
+        <li>
+          {{ h.input_text|truncatechars:40 }}
+          → {{ h.result_data.sentiment.label|capfirst }}
+          / {{ h.result_data.toxicity.highest_label }}
+          {% if h.result_data.regenerated %}(재생성){% endif %}
+        </li>
+      {% empty %}
+        <li class="history-empty">아직 실행 기록이 없습니다.</li>
+      {% endfor %}
+    </ol>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'my_gpt/js/combo.js' %}"></script>
+{% endblock %}
