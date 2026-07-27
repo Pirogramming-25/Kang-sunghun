@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>post_create</title>
+<style>
+    main {
+        min-height: 100vh;
+        padding: 20px;
+    }
+    .ocr-section {
+        border: 2px dashed #4CAF50;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        background: #f9fff9;
+    }
+    .ocr-section h3 {
+        margin-top: 0;
+        color: #4CAF50;
+    }
+    #ocr-status {
+        margin-top: 10px;
+        font-weight: bold;
+        color: #ff9800;
+    }
+</style>
+{% endblock %}
+{% block content %}
+
+<!-- 영양성분표 OCR 업로드 섹션 -->
+<div class="ocr-section">
+    <h3>🍎 영양성분표 자동 인식</h3>
+    <p>영양성분표 이미지를 올리면 칼로리·탄단지가 자동으로 입력됩니다.</p>
+    <input type="file" id="ocr-image" accept="image/*">
+    <div id="ocr-status"></div>
+</div>
+
+<form action="{% url 'posts:create' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-success">등록하기</button>
+</form>
+
+<script>
+document.getElementById('ocr-image').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const status = document.getElementById('ocr-status');
+    status.textContent = '분석 중... ⏳';
+
+    const formData = new FormData();
+    formData.append('image', file);
+
+    fetch("{% url 'posts:ocr_nutrition' %}", {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+            status.textContent = '인식 실패: ' + data.error;
+            return;
+        }
+        // 폼 필드 자동 채우기
+        if (data.calories !== null)     document.getElementById('id_calories').value = data.calories;
+        if (data.carbohydrate !== null) document.getElementById('id_carbohydrate').value = data.carbohydrate;
+        if (data.protein !== null)      document.getElementById('id_protein').value = data.protein;
+        if (data.fat !== null)          document.getElementById('id_fat').value = data.fat;
+
+        status.textContent = '인식 완료! ✅ (필요시 직접 수정하세요)';
+    })
+    .catch(err => {
+        status.textContent = '오류 발생: ' + err;
+    });
+});
+</script>
+
+{% endblock %}
